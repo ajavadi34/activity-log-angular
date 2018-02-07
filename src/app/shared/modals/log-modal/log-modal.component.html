@@ -1,0 +1,30 @@
+<form [formGroup]="logForm" [ngClass]="{'submitted': submitted}">
+  <div class="modal-header">
+    <div class="col">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cancel()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <h4 class="modal-title">Log #</h4>
+    </div>
+  </div>
+  <div class="modal-body">
+    <label for="modal-type">Type</label>
+    <select id="modal-type" class="form-control" formControlName="type">
+      <option value="" disabled>Select type...</option>
+      <option></option>
+    </select>
+
+    <label for="modal-title">Title</label>
+    <input id="modal-title" type="text" class="form-control" formControlName="title">
+
+    <label for="modal-desc">Description</label>
+    <textarea id="modal-desc" class="form-control" formControlName="description"></textarea>
+
+    <label for="modal-date">Date</label>
+    <input id="modal-date" type="text" class="form-control datepicker" formControlName="date">
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="cancel()">Close</button>
+    <button type="button" class="btn btn-primary" (click)="save()">Save</button>
+  </div>
+</form>
