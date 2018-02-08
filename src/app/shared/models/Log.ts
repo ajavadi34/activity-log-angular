@@ -1,4 +1,4 @@
-export interface Log {
+export class Log {
     id : number;
     type: string;
     title: string;

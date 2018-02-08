@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap/modal/modal-ref';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { Log } from '../../models/Log';
 
 @Component({
   selector: 'app-log-modal',
@@ -8,6 +9,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
   styleUrls: ['./log-modal.component.css']
 })
 export class LogModalComponent implements OnInit {
+  @Input() log: Log;
   logForm: FormGroup;
   submitted: boolean;
 
@@ -17,10 +19,10 @@ export class LogModalComponent implements OnInit {
 
   ngOnInit() {
     this.logForm = this.formBuilder.group({
-      type: new FormControl("", [Validators.required]),
-      title: new FormControl("", [Validators.required]),
-      description: new FormControl(""),
-      date: new FormControl("", Validators.required)
+      type: new FormControl(this.log.type, [Validators.required]),
+      title: new FormControl(this.log.title, [Validators.required]),
+      description: new FormControl(this.log.description),
+      date: new FormControl(this.log.date, Validators.required)
     });
   }
 
