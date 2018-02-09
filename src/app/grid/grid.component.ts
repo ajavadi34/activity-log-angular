@@ -5,6 +5,7 @@ import { LogModalComponent } from '../shared/modals/log-modal/log-modal.componen
 import { LogDataService } from '../shared/services/log-data.service';
 import { ConfirmationModalComponent } from '../shared/modals/confirmation-modal/confirmation-modal.component';
 import { Log } from '../shared/models/Log';
+import { LogType } from '../shared/models/LogType';
 
 @Component({
   selector: 'app-grid',
@@ -19,15 +20,20 @@ export class GridComponent implements OnInit {
     private logService: LogDataService
   ) {
     this.grid = new GridData();
-    this.grid.headers = ['Type', 'Title', 'Description', 'Date', ''];
   }
 
   ngOnInit() {
-    this.grid.rows = this.logService.getLogs();
+    this.logService.getLogs().subscribe(
+      (data: GridData) => {
+        this.grid.types = LogType.mapJsonResponse(data.types);
+        this.grid.headers = data.headers;
+        this.grid.rows = Log.mapJsonResponse(data.rows);
+      }, err => {
+        console.log(err)
+      });
   }
 
   deleteLog(logId: number, event: any): void {
-    // delete log
     event.stopPropagation();
     console.log('Deleting log id: ' + logId);
 
@@ -44,6 +50,10 @@ export class GridComponent implements OnInit {
     modalRef.result.then(result => {
       if (result === 'confirmed') {
         console.log(result);
+        this.logService.deleteLog(logId).subscribe(res => {
+          //todo get typeid from dropdown
+          this.reloadLogs(0);
+        });
       }
     }).catch(reason => {
       console.log(reason);
@@ -64,11 +74,36 @@ export class GridComponent implements OnInit {
     this.showLogForm(log);
   }
 
+  reloadLogs(logType: number): void {
+    this.logService.getLogs(logType).subscribe((data: GridData) => {
+      console.log(data);
+      this.grid.rows = Log.mapJsonResponse(data.rows);
+    }, err => {
+      console.log(err);
+    });
+  }
+
   private showLogForm(log: Log): void {
     let modalRef = this.modalService.open(LogModalComponent, { size: 'lg' });
+    
     (modalRef.componentInstance as LogModalComponent).log = log;
-    modalRef.result.then(result => {
+    (modalRef.componentInstance as LogModalComponent).logTypes = this.grid.types;
 
+    modalRef.result.then((result: Log) => {
+      if (!log.id) {
+        // create new log
+        this.logService.createLog(result).subscribe(res => {
+          //todo get value from dropdown
+          this.reloadLogs(0);
+        });
+      }
+      else {
+        //update existing log
+        this.logService.updateLog(result).subscribe(res => {
+          //todo get value from dropdown
+          this.reloadLogs(0);
+        })
+      }
     }).catch(reason => {
       console.log(reason);
     });

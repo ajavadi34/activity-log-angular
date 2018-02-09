@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap/modal/modal-ref';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Log } from '../../models/Log';
+import { LogType } from '../../models/LogType';
 
 @Component({
   selector: 'app-log-modal',
@@ -10,6 +11,7 @@ import { Log } from '../../models/Log';
 })
 export class LogModalComponent implements OnInit {
   @Input() log: Log;
+  @Input() logTypes: LogType[];
   logForm: FormGroup;
   submitted: boolean;
 
@@ -37,5 +39,15 @@ export class LogModalComponent implements OnInit {
       // invalid form
       return;
     }
+
+    let updatedLog: Log = {
+      id: this.log.id,
+      type: this.logForm.get('type').value,
+      title: this.logForm.get('title').value,
+      description: this.logForm.get('description').value,
+      date: this.logForm.get('date').value
+    };
+    console.log(updatedLog);
+    this.activeModal.close(updatedLog);
   }
 }
