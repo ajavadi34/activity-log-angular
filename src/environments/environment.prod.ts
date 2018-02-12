@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: '/activity-log/controller/taskcontroller.php'
+  apiUrl: '/my_sites/activity-log-v2/controller/taskcontroller.php'
 };
