@@ -3,7 +3,7 @@ export class Log {
     type: string;
     title: string;
     description: string;
-    date: string;
+    date: Date;
 
     constructor() {
 
