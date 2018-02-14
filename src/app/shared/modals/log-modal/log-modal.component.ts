@@ -53,6 +53,13 @@ export class LogModalComponent implements OnInit {
     this.activeModal.close(updatedLog);
   }
 
+  isDisabled(): boolean {
+    if (this.log.id > 0) {
+      return true;
+    }
+    return null;
+  }
+
   private getDatePickerObj(dateString: string): NgbDateStruct {
     let date: moment.Moment = moment(dateString, 'YYYY/MM/DD');
 
