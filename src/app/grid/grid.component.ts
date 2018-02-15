@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { GridData } from '../shared/models/Grid';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap/modal/modal';
 import { LogModalComponent } from '../shared/modals/log-modal/log-modal.component';
@@ -14,11 +15,14 @@ import { LogType } from '../shared/models/LogType';
 })
 export class GridComponent implements OnInit {
   grid: GridData;
+  logTypeId: number;
 
   constructor(
     private modalService: NgbModal,
     private logService: LogDataService
   ) {
+    //default dropdown
+    this.logTypeId = 0;
     this.grid = new GridData();
   }
 
@@ -51,8 +55,7 @@ export class GridComponent implements OnInit {
       if (result === 'confirmed') {
         console.log(result);
         this.logService.deleteLog(logId).subscribe(res => {
-          //todo get typeid from dropdown
-          this.reloadLogs(0);
+          this.reloadLogs();
         });
       }
     }).catch(reason => {
@@ -74,12 +77,12 @@ export class GridComponent implements OnInit {
     this.showLogForm(log);
   }
 
-  reloadLogs(logType: number): void {
-    this.logService.getLogs(logType).subscribe((data: GridData) => {
-      console.log(data);
+  reloadLogs(): void {
+    this.logService.getLogs(this.logTypeId).subscribe((data: GridData) => {
       this.grid.rows = Log.mapJsonResponse(data.rows);
     }, err => {
       console.log(err);
+      alert(err);
     });
   }
 
@@ -93,15 +96,13 @@ export class GridComponent implements OnInit {
       if (!log.id) {
         // create new log
         this.logService.createLog(result).subscribe(res => {
-          //todo get value from dropdown
-          this.reloadLogs(0);
+          this.reloadLogs();
         });
       }
       else {
         //update existing log
         this.logService.updateLog(result).subscribe(res => {
-          //todo get value from dropdown
-          this.reloadLogs(0);
+          this.reloadLogs();
         })
       }
     }).catch(reason => {

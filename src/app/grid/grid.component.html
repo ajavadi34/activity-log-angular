@@ -13,7 +13,7 @@
     <div class="col">
         <div class="form-inline pull-right">
             <label class="pr-2">Filter By:</label>
-            <select class="form-control" (change)="reloadLogs($event.target.value)">
+            <select class="form-control" (change)="reloadLogs()" [(ngModel)]="logTypeId">
                 <option value="0">None</option>
                 <option *ngFor="let type of grid.types" [value]="type.typeId">{{ type.name }}</option>
             </select>
