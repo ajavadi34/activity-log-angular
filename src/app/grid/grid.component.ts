@@ -16,6 +16,8 @@ import { LogType } from '../shared/models/LogType';
 export class GridComponent implements OnInit {
   grid: GridData;
   logTypeId: number;
+  isFirstPage: boolean;
+  isLastPage: boolean;
 
   constructor(
     private modalService: NgbModal,
@@ -27,16 +29,7 @@ export class GridComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.logService.getLogs().subscribe(
-      (data: GridData) => {
-        // sets all returned data
-        this.grid = data;
-        // handle special object relational mapping
-        this.grid.types = LogType.mapJsonResponse(data.types);
-        this.grid.rows = Log.mapJsonResponse(data.rows);
-      }, err => {
-        console.log(err)
-      });
+    this.loadData();
   }
 
   deleteLog(logId: number, event: any): void {
@@ -80,27 +73,29 @@ export class GridComponent implements OnInit {
   }
 
   reloadLogs(): void {
-    this.logService.getLogs(this.logTypeId).subscribe((data: GridData) => {
-      this.grid.rows = Log.mapJsonResponse(data.rows);
-    }, err => {
-      console.log(err);
-      alert(err);
-    });
+    this.loadData(this.logTypeId);
   }
 
   getPaginationText(): string {
-    console.log(this.grid.pageNumber);
-    return 'Showing ' 
-    + (((this.grid.pageNumber - 1) * this.grid.pageSize) + 1)
-    + ' - ' 
-    + (this.grid.rows.length + (this.grid.pageSize * (this.grid.pageNumber - 1))) 
-    + ' of '
-    + this.grid.totalRows;
+    return 'Showing '
+      + (((this.grid.pageNumber - 1) * this.grid.pageSize) + 1)
+      + ' - '
+      + (this.grid.rows.length + (this.grid.pageSize * (this.grid.pageNumber - 1)))
+      + ' of '
+      + this.grid.totalRows;
+  }
+
+  previousPage(): void {
+    this.loadData(this.logTypeId, this.grid.pageNumber - 1);
+  }
+
+  nextPage(): void {
+    this.loadData(this.logTypeId, this.grid.pageNumber + 1);
   }
 
   private showLogForm(log: Log): void {
     let modalRef = this.modalService.open(LogModalComponent, { size: 'lg' });
-    
+
     (modalRef.componentInstance as LogModalComponent).log = log;
     (modalRef.componentInstance as LogModalComponent).logTypes = this.grid.types;
 
@@ -120,5 +115,28 @@ export class GridComponent implements OnInit {
     }).catch(reason => {
       console.log(reason);
     });
+  }
+
+  private loadData(logType = 0, pageNumber = 1): void {
+    this.logService.getLogs(logType, pageNumber).subscribe(
+      (data: GridData) => {
+        // sets all returned data
+        this.grid = data;
+        // handle special object relational mapping
+        this.grid.types = LogType.mapJsonResponse(data.types);
+        this.grid.rows = Log.mapJsonResponse(data.rows);
+
+        // set first/last page flags
+        if (data.pageNumber == 1)
+          this.isFirstPage = true;
+        else
+          this.isFirstPage = false;
+        if ((this.grid.rows.length + (this.grid.pageSize * (this.grid.pageNumber - 1))) < this.grid.totalRows)
+          this.isLastPage = false;
+        else
+          this.isLastPage = true;
+      }, err => {
+        console.log(err)
+      });
   }
 }

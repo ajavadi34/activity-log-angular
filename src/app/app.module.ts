@@ -9,7 +9,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LogDataService } from './shared/services/log-data.service';
 import { ConfirmationModalComponent } from './shared/modals/confirmation-modal/confirmation-modal.component';
 import { HttpModule } from '@angular/http';
+import { RouterModule } from '@angular/router';
 
+const routes = [];
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { HttpModule } from '@angular/http';
     NgbModule.forRoot(),
     ReactiveFormsModule,
     HttpModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [LogDataService],
   bootstrap: [GridComponent],

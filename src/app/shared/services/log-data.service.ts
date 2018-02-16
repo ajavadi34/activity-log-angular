@@ -14,7 +14,7 @@ export class LogDataService {
 
   constructor(private http: Http) { }
 
-  getLogs(logType = 0, pageNumber = 1): Observable<GridData> {
+  getLogs(logType: number, pageNumber: number): Observable<GridData> {
     let options = new RequestOptions({
       params: {
         Type: logType,
