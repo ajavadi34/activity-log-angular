@@ -29,8 +29,10 @@ export class GridComponent implements OnInit {
   ngOnInit() {
     this.logService.getLogs().subscribe(
       (data: GridData) => {
+        // sets all returned data
+        this.grid = data;
+        // handle special object relational mapping
         this.grid.types = LogType.mapJsonResponse(data.types);
-        this.grid.headers = data.headers;
         this.grid.rows = Log.mapJsonResponse(data.rows);
       }, err => {
         console.log(err)
@@ -84,6 +86,16 @@ export class GridComponent implements OnInit {
       console.log(err);
       alert(err);
     });
+  }
+
+  getPaginationText(): string {
+    console.log(this.grid.pageNumber);
+    return 'Showing ' 
+    + (((this.grid.pageNumber - 1) * this.grid.pageSize) + 1)
+    + ' - ' 
+    + (this.grid.rows.length + (this.grid.pageSize * (this.grid.pageNumber - 1))) 
+    + ' of '
+    + this.grid.totalRows;
   }
 
   private showLogForm(log: Log): void {

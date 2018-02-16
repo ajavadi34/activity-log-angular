@@ -5,4 +5,7 @@ export class GridData {
     types: LogType[];
     headers: string[];
     rows: Log[];
+    pageSize: number;
+    pageNumber: number;
+    totalRows: number;
 }

@@ -1,6 +1,9 @@
 <div class="row mt-3 mb-3">
     <div class="col">
-        <h1>Logs - Happy Valentines Day <i class="fa fa-heart" aria-hidden="true"></i></h1>
+        <h1>Logs <i class="fa fa-heart" aria-hidden="true"></i></h1>
+    </div>
+    <div class="col text-right">
+        <span *ngIf="grid.rows && grid.rows.length" [innerHTML]="getPaginationText()"></span>
     </div>
 </div>
 

@@ -14,10 +14,11 @@ export class LogDataService {
 
   constructor(private http: Http) { }
 
-  getLogs(logType = 0): Observable<GridData> {
+  getLogs(logType = 0, pageNumber = 2): Observable<GridData> {
     let options = new RequestOptions({
       params: {
-        Type: logType
+        Type: logType,
+        PageNumber: pageNumber
       }
     });
     return this.http.get(environment.apiUrl, options).map(res => res.json());

@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost/activity-log/Controller/TaskController.php'
+  apiUrl: 'http://localhost/activity-log-service/Controller/TaskController.php'
 };
