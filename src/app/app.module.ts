@@ -10,6 +10,7 @@ import { LogDataService } from './shared/services/log-data.service';
 import { ConfirmationModalComponent } from './shared/modals/confirmation-modal/confirmation-modal.component';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
+import { ManageLogTypesComponent } from './shared/modals/manage-log-types/manage-log-types.component';
 
 const routes = [];
 
@@ -18,7 +19,8 @@ const routes = [];
     AppComponent,
     GridComponent,
     LogModalComponent,
-    ConfirmationModalComponent
+    ConfirmationModalComponent,
+    ManageLogTypesComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +32,6 @@ const routes = [];
   ],
   providers: [LogDataService],
   bootstrap: [GridComponent],
-  entryComponents: [LogModalComponent, ConfirmationModalComponent]
+  entryComponents: [LogModalComponent, ConfirmationModalComponent, ManageLogTypesComponent]
 })
 export class AppModule { }

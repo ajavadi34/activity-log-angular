@@ -7,6 +7,7 @@ import { LogDataService } from '../shared/services/log-data.service';
 import { ConfirmationModalComponent } from '../shared/modals/confirmation-modal/confirmation-modal.component';
 import { Log } from '../shared/models/Log';
 import { LogType } from '../shared/models/LogType';
+import { ManageLogTypesComponent } from '../shared/modals/manage-log-types/manage-log-types.component';
 
 @Component({
   selector: 'app-grid',
@@ -91,6 +92,12 @@ export class GridComponent implements OnInit {
 
   nextPage(): void {
     this.loadData(this.logTypeId, this.grid.pageNumber + 1);
+  }
+
+  manageLogTypes(): void {
+    let modalRef = this.modalService.open(ManageLogTypesComponent, { size: 'lg' });
+
+    (modalRef.componentInstance as ManageLogTypesComponent).logTypes = this.grid.types;
   }
 
   private showLogForm(log: Log): void {
