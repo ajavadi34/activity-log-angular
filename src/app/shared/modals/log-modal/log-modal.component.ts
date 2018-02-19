@@ -23,7 +23,7 @@ export class LogModalComponent implements OnInit {
 
   ngOnInit() {
     this.logForm = this.formBuilder.group({
-      type: new FormControl(this.log.type, [Validators.required]),
+      type: new FormControl(this.getTypeIdFromName(this.log.type), [Validators.required]),
       title: new FormControl(this.log.title, [Validators.required]),
       description: new FormControl(this.log.description),
       date: new FormControl(this.getDatePickerObj(this.log.date), Validators.required)
@@ -73,5 +73,14 @@ export class LogModalComponent implements OnInit {
   private getDatePickerValue(dpObj: NgbDateStruct): string {
     let dateString: string = dpObj.year + '/' + dpObj.month + '/' + dpObj.day;
     return moment(dateString, 'YYYY/MM/DD').format('YYYY/MM/DD');
+  }
+
+  private getTypeIdFromName(typeName: string): number {
+    for (let index = 0; index < this.logTypes.length; index++) {
+      if (this.logTypes[index].name === typeName) {
+        return this.logTypes[index].typeId;
+      }      
+    }
+    return 0;
   }
 }

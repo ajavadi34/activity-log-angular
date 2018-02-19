@@ -11,7 +11,7 @@
     <label for="modal-type">Type</label>
     <select id="modal-type" class="form-control" formControlName="type" [attr.disabled]="isDisabled()">
       <option value="0" disabled>Select type...</option>
-      <option *ngFor="let type of logTypes" [value]="type.name">{{ type.name }}</option>
+      <option *ngFor="let type of logTypes" [value]="type.typeId">{{ type.name }}</option>
     </select>
 
     <label for="modal-title">Title</label>
