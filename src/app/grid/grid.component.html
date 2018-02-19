@@ -1,5 +1,5 @@
 <div class="row mt-3 mb-3">
-    <div class="col">
+    <div class="col text-nowrap">
         <h1>Logs
             <i class="fa fa-heart" aria-hidden="true"></i>
         </h1>
@@ -9,13 +9,13 @@
     </div>
 </div>
 
-<div class="row justify-content-between mb-2">
-    <div class="col">
+<div class="row mb-2">
+    <div class="col-sm-2 align-self-center">
         <a title="Add new log" (click)="createLog()">
             <i class="fa fa-2x fa-plus-square-o add-new-record" aria-hidden="true"></i>
         </a>
     </div>
-    <div class="col">
+    <div class="col-sm-10">
         <div class="form-inline pull-right">
             <label class="pr-2">Filter By:</label>
             <select class="form-control" (change)="reloadLogs()" [(ngModel)]="logTypeId">
