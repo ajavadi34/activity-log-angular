@@ -4,12 +4,33 @@
       <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="close()">
         <span aria-hidden="true">&times;</span>
       </button>
-      <h4 class="modal-title">Manage Log Types</h4>
+      <h4 class="modal-title">Manage Tabs (not working yet)</h4>
     </div>
   </div>
 
   <div class="modal-body new-line">
-    <p>coming soon...</p>
+    <div class="input-group mb-3">
+      <input #newTypeName type="text" class="form-control" placeholder="New Tab Name" />
+      <div class="input-group-append">
+        <button class="btn btn-outline-primary" type="button" (click)="addType(newTypeName.value)">Add</button>
+      </div>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table">
+        <tr *ngFor="let type of logTypes">
+          <td class="align-middle">
+            <span *ngIf="type.typeId !== editTypeId" [innerHTML]="type.name"></span>
+            <input *ngIf="type.typeId == editTypeId" type="text" class="form-control" [value]="type.name" />
+          </td>
+          <td class="text-right">
+            <button class="btn btn-outline-primary" (click)="toggleRow(type.typeId)">
+              <i class="fa" [ngClass]="type.typeId !== editTypeId ? 'fa-pencil' : 'fa-floppy-o'" aria-hidden="true"></i>
+            </button>
+          </td>
+        </tr>
+      </table>
+    </div>
   </div>
 
   <div class="modal-footer">
