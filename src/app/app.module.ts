@@ -11,6 +11,7 @@ import { ConfirmationModalComponent } from './shared/modals/confirmation-modal/c
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { ManageLogTypesComponent } from './shared/modals/manage-log-types/manage-log-types.component';
+import { LogTypeService } from './shared/services/log-type.service';
 
 const routes = [];
 
@@ -30,7 +31,7 @@ const routes = [];
     FormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [LogDataService],
+  providers: [LogDataService, LogTypeService],
   bootstrap: [GridComponent],
   entryComponents: [LogModalComponent, ConfirmationModalComponent, ManageLogTypesComponent]
 })

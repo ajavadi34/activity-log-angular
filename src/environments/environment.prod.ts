@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: '/Controller/TaskController.php'
+  logDataApiUrl: '/Controller/TaskController.php',
+  logTypeApiUrl: '/Controller/TaskTypeController.php'
 };

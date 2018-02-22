@@ -98,6 +98,17 @@ export class GridComponent implements OnInit {
     let modalRef = this.modalService.open(ManageLogTypesComponent, { size: 'lg' });
 
     (modalRef.componentInstance as ManageLogTypesComponent).logTypes = this.grid.types;
+
+    modalRef.result.then(result => {
+      // refresh data
+      this.reloadLogs();
+      console.log('data reloaded')
+    }).catch(reason => {
+      // refresh data
+      console.log(reason)
+      this.reloadLogs();
+      console.log('data reloaded')
+    });
   }
 
   private showLogForm(log: Log): void {

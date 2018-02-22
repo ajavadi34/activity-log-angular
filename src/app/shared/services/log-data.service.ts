@@ -3,7 +3,6 @@ import { Log } from '../models/Log';
 import { Http, RequestOptions } from "@angular/http";
 
 import { Observable } from "rxjs/Observable";
-// import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { environment } from '../../../environments/environment';
@@ -21,7 +20,7 @@ export class LogDataService {
         PageNumber: pageNumber
       }
     });
-    return this.http.get(environment.apiUrl, options).map(res => res.json());
+    return this.http.get(environment.logDataApiUrl, options).map(res => res.json());
   }
 
   deleteLog(logId: number): Observable<any> {
@@ -30,7 +29,7 @@ export class LogDataService {
         Id: logId
       }
     });
-    return this.http.delete(environment.apiUrl, options);
+    return this.http.delete(environment.logDataApiUrl, options);
   }
 
   createLog(log: Log): Observable<any> {
@@ -40,7 +39,7 @@ export class LogDataService {
       Description: log.description,
       Date: log.date
     };
-    return this.http.post(environment.apiUrl, body);
+    return this.http.post(environment.logDataApiUrl, body);
   }
 
   updateLog(log: Log): Observable<any> {
@@ -51,6 +50,6 @@ export class LogDataService {
       Description: log.description,
       Date: log.date
     };
-    return this.http.put(environment.apiUrl, body);
+    return this.http.put(environment.logDataApiUrl, body);
   }
 }

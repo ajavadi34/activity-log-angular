@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { LogType } from '../../models/LogType';
 import { LogDataService } from '../../services/log-data.service';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { LogTypeService } from '../../services/log-type.service';
 
 @Component({
   selector: 'app-manage-log-types',
@@ -11,8 +12,13 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 export class ManageLogTypesComponent implements OnInit {
   @Input() logTypes: LogType[];
   public editTypeId: number;
+  public newTypeName: string;
 
-  constructor(private logService: LogDataService, private activeModal: NgbActiveModal) { }
+  constructor(
+    private logService: LogDataService,
+    private activeModal: NgbActiveModal,
+    private logTypeService: LogTypeService
+  ) { }
 
   ngOnInit() {
   }
@@ -21,12 +27,19 @@ export class ManageLogTypesComponent implements OnInit {
     this.activeModal.dismiss();
   }
 
-  addType(newTypeName: string): void {
-    // todo: call service to save new type
-    this.logTypes.push({
-      typeId: Math.max.apply(Math, this.logTypes.map(function(o){return o.typeId})) + 1,
-      name: newTypeName
-    });
+  addType(): void {
+    if (this.newTypeName && this.newTypeName.length > 0) {
+      this.logTypeService.createLogType(this.newTypeName).subscribe(res => {
+        // append new log type to type array
+        let log = LogType.mapJsonResponse(res);
+        this.logTypes.push(log[0]);
+
+        // reset field
+        this.newTypeName = null;
+      }, err => {
+        console.log(err);
+      });
+    }
   }
 
   toggleRow(typeId: number): void {
@@ -36,11 +49,14 @@ export class ManageLogTypesComponent implements OnInit {
     }
     else {
       // a row was in edit mode
-      this.editTypeId = undefined;
-
+      let logType: LogType = this.logTypes.find(l => l.typeId == typeId);
       if (this.editTypeId == typeId) {
         // save updated type name
+        this.logTypeService.updateLogType(logType).subscribe(res => console.log(res), err => console.log(err));
       }
+
+      // removed row from edit mode
+      this.editTypeId = undefined;
     }
   }
 }

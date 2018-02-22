@@ -10,9 +10,9 @@
 
   <div class="modal-body new-line">
     <div class="input-group mb-3">
-      <input #newTypeName type="text" class="form-control" placeholder="New Tab Name" />
+      <input type="text" class="form-control" placeholder="New Tab Name" [(ngModel)]="newTypeName" />
       <div class="input-group-append">
-        <button class="btn btn-outline-primary" type="button" (click)="addType(newTypeName.value)">Add</button>
+        <button class="btn btn-outline-primary" type="button" (click)="addType()">Add</button>
       </div>
     </div>
 
@@ -21,7 +21,7 @@
         <tr *ngFor="let type of logTypes">
           <td class="align-middle">
             <span *ngIf="type.typeId !== editTypeId" [innerHTML]="type.name"></span>
-            <input *ngIf="type.typeId == editTypeId" type="text" class="form-control" [value]="type.name" />
+            <input *ngIf="type.typeId == editTypeId" type="text" class="form-control" [(ngModel)]="type.name" />
           </td>
           <td class="text-right">
             <button class="btn btn-outline-primary" (click)="toggleRow(type.typeId)">
