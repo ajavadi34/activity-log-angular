@@ -18,12 +18,12 @@
     <input id="modal-title" type="text" class="form-control" formControlName="title">
 
     <label for="modal-desc">Description</label>
-    <textarea id="modal-desc" class="form-control" formControlName="description"></textarea>
+    <textarea id="modal-desc" class="form-control" rows="3" formControlName="description"></textarea>
 
     <label for="modal-date">Date</label>
     <!-- <input id="modal-date" type="text" class="form-control datepicker" formControlName="date"> -->
     <div class="input-group">
-      <input class="form-control" name="dp" formControlName="date" ngbDatepicker #d="ngbDatepicker">
+      <input class="form-control" name="dp" formControlName="date" (click)="d.toggle()" ngbDatepicker #d="ngbDatepicker">
       <div class="input-group-append">
         <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
             <i class="fa fa-calendar" aria-hidden="true"></i>
