@@ -8,7 +8,7 @@ import { LogModalComponent } from './shared/modals/log-modal/log-modal.component
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LogDataService } from './shared/services/log-data.service';
 import { ConfirmationModalComponent } from './shared/modals/confirmation-modal/confirmation-modal.component';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { ManageLogTypesComponent } from './shared/modals/manage-log-types/manage-log-types.component';
 import { LogTypeService } from './shared/services/log-type.service';
@@ -27,7 +27,7 @@ const routes = [];
     BrowserModule,
     NgbModule.forRoot(),
     ReactiveFormsModule,
-    HttpModule,
+    HttpClientModule,
     FormsModule,
     RouterModule.forRoot(routes)
   ],

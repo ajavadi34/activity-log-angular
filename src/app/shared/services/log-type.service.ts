@@ -1,23 +1,20 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-
-import { Observable } from "rxjs/Observable";
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
+import { Observable } from "rxjs";
 import { LogType } from '../models/LogType';
 
 @Injectable()
 export class LogTypeService {
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
-  createLogType(typeName: string): Observable<LogType[]> {
+  createLogType(typeName: string): Observable<any> {
     let body = {
       Name: typeName
     };
 
-    return this.http.post(environment.logTypeApiUrl, body).map(res => res.json());
+    return this.http.post(environment.logTypeApiUrl, body);
   }
 
   updateLogType(logType: LogType): Observable<any> {

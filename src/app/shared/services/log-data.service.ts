@@ -1,35 +1,31 @@
 import { Injectable } from '@angular/core';
 import { Log } from '../models/Log';
-import { Http, RequestOptions } from "@angular/http";
-
-import { Observable } from "rxjs/Observable";
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
+import { HttpClient, HttpParams } from "@angular/common/http";
+import { Observable } from "rxjs";
 import { environment } from '../../../environments/environment';
-import { GridData } from '../models/Grid';
 
 @Injectable()
 export class LogDataService {
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
-  getLogs(logType: number, pageNumber: number): Observable<GridData> {
-    let options = new RequestOptions({
-      params: {
-        Type: logType,
-        PageNumber: pageNumber
-      }
-    });
-    return this.http.get(environment.logDataApiUrl, options).map(res => res.json());
+  getLogs(logType: number, pageNumber: number): Observable<any> {
+    let options = {
+      params: new HttpParams()
+        .set('Type', logType.toString())
+        .set('PageNumber', pageNumber.toString())
+    };
+
+    return this.http.get(environment.logDataApiUrl, options);
   }
 
   deleteLog(logId: number): Observable<any> {
-    let options = new RequestOptions({
-      body: {
-        Id: logId
-      }
-    });
-    return this.http.delete(environment.logDataApiUrl, options);
+    let options = {
+      body: { Id: logId }
+    };
+
+    // work around since new http client does not allow body for delete method
+    return this.http.request('delete', environment.logDataApiUrl, options);
   }
 
   createLog(log: Log): Observable<any> {
@@ -39,6 +35,7 @@ export class LogDataService {
       Description: log.description,
       Date: log.date
     };
+
     return this.http.post(environment.logDataApiUrl, body);
   }
 
@@ -50,6 +47,7 @@ export class LogDataService {
       Description: log.description,
       Date: log.date
     };
+
     return this.http.put(environment.logDataApiUrl, body);
   }
 }
