@@ -62,7 +62,12 @@ export class GridComponent implements OnInit {
   createLog(): void {
     // open blank modal form
     console.log('Creating new log');
-    this.showLogForm(new Log());
+    let newLogDefault = new Log();
+    const typeIndex = this.grid.types.findIndex(t => t.typeId === this.logTypeId);
+    if (typeIndex > -1) {
+      newLogDefault.type = this.grid.types[typeIndex].name;
+    }
+    this.showLogForm(newLogDefault);
   }
 
   editLog(logId: number): void {
