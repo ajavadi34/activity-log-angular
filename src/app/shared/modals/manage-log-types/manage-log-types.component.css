@@ -1,4 +1,4 @@
-.modal-wrapper {
-    max-height: 600px;
+.modal-body {
+    height: 500px;
     overflow-y: scroll;
 }
