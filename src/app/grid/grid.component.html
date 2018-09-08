@@ -43,9 +43,9 @@
                 {{ header }}
             </th>
         </tr>
-        <tr *ngFor="let row of grid.rows" (click)="editLog(row.id)">
+        <tr *ngFor="let row of grid.rows">
             <td>
-                {{ row.id }}
+                <i class="fa fa-pencil" aria-hidden="true" (click)="editLog(row.id)"></i>
             </td>
             <td>
                 {{ row.type }}
@@ -60,7 +60,8 @@
                 {{ row.date | date:'shortDate' }}
             </td>
             <td>
-                <button type="button" title="Delete log" class="btn btn-primary" (click)="deleteLog(row.id, $event)">Delete</button>
+                <i class="fa fa-trash fa-1x" aria-hidden="true" (click)="deleteLog(row.id, $event)"></i>
+                <!-- <button type="button" title="Delete log" class="btn btn-primary" (click)="deleteLog(row.id, $event)">Delete</button> -->
             </td>
         </tr>
     </table>
