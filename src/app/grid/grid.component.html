@@ -57,7 +57,7 @@
                 {{ row.description }}
             </td>
             <td>
-                {{ row.date }}
+                {{ row.date | date:'shortDate' }}
             </td>
             <td>
                 <button type="button" title="Delete log" class="btn btn-primary" (click)="deleteLog(row.id, $event)">Delete</button>
