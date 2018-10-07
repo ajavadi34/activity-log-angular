@@ -33,6 +33,7 @@ export class LogDataService {
       TypeId: log.type,
       Title: log.title,
       Description: log.description,
+      Link: log.link,
       Date: log.date
     };
 
@@ -45,6 +46,7 @@ export class LogDataService {
       TypeId: log.type,
       Title: log.title,
       Description: log.description,
+      Link: log.link,
       Date: log.date
     };
 

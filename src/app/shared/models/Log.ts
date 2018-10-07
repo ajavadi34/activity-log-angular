@@ -3,6 +3,7 @@ export class Log {
     type: string;
     title: string;
     description: string;
+    link: string;
     date: string;
 
     constructor() {
@@ -15,7 +16,8 @@ export class Log {
                 id: obj['Id'], 
                 type: obj['Type'], 
                 title: obj['Title'], 
-                description: obj['Description'], 
+                description: obj['Description'],
+                link: obj['Link'],
                 date: obj['Date']
             };
             return log;

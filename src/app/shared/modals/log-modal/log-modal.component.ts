@@ -22,10 +22,13 @@ export class LogModalComponent implements OnInit {
   }
 
   ngOnInit() {
+    const webpageRegex = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
+
     this.logForm = this.formBuilder.group({
       type: new FormControl(this.getTypeIdFromName(this.log.type), [Validators.required]),
       title: new FormControl(this.log.title, [Validators.required]),
       description: new FormControl(this.log.description),
+      link: new FormControl(this.log.link, [Validators.pattern(webpageRegex)]),
       date: new FormControl(this.getDatePickerObj(this.log.date), Validators.required)
     });
   }
@@ -47,6 +50,7 @@ export class LogModalComponent implements OnInit {
       type: this.logForm.get('type').value,
       title: this.logForm.get('title').value,
       description: this.logForm.get('description').value,
+      link: this.logForm.get('link').value,
       date: this.getDatePickerValue(this.logForm.get('date').value)
     };
     console.log(updatedLog);
