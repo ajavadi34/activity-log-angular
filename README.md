@@ -1,4 +1,4 @@
-# activity-log-angular
+# activity log angular
 
 This project is a simple activity logger displayed in a grid.
 
@@ -13,10 +13,10 @@ This project uses:
 
 
 ### QUICK START
-1. clone repo *activity-log-angular*
-2. clone repo *activity-log-service* into a web server directory that supports php
+1. Clone repo *activity-log-angular*
+2. Clone repo *activity-log-service* into a web server directory that supports php
 3. Create a MySQL database and import the *setup.sql* script
-4. Create a db_connect.php file in the root of the project folder
+4. Create a *db_connect.php* file in the root of the project folder
 5. Paste the following code into the file and enter your MySQL credentials:
 ```
     <?php
