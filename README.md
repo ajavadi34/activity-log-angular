@@ -9,7 +9,7 @@ This project uses:
 * PHP
 * MySQL
 
-## [View Demo](http://activitylogdemo.ajdrafts.com/)
+<iframe style="border: 0; height: 550px; width: 900px;" src="http://activitylogdemo.ajdrafts.com/"></iframe>
 
 
 ### QUICK START
