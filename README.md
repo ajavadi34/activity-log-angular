@@ -30,4 +30,5 @@ This project uses:
 Enjoy!
 
 ### DEMO
-<iframe style="border: 0; height: 550px; width: 900px;" src="//activitylogdemo.ajdrafts.com/"></iframe>
+Data is refreshed nightly
+<iframe style="border: 2px #ccc solid; height: 630px; width: 100%;" src="//activitylogdemo.ajdrafts.com/"></iframe>
