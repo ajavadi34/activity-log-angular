@@ -2,6 +2,10 @@
 
 This project is a simple activity logger displayed in a grid.
 
+### DEMO
+Data is refreshed daily
+<iframe style="border: 2px #ccc solid; height: 630px; width: 100%;" src="//activitylogdemo.ajdrafts.com/"></iframe>
+
 This project uses:
 
 * Bootstrap 4
@@ -28,7 +32,3 @@ This project uses:
 6. Navigate to the url (ex: http://localhost/activity-log/) and start logging
 
 Enjoy!
-
-### DEMO
-Data is refreshed nightly
-<iframe style="border: 2px #ccc solid; height: 630px; width: 100%;" src="//activitylogdemo.ajdrafts.com/"></iframe>
