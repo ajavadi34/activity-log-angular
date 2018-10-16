@@ -9,7 +9,7 @@ This project uses:
 * PHP
 * MySQL
 
-## [View Demo](http://activitylogdemo.ajdrafts.com/)
+## [View Demo](https://ajavadi34.github.io/activity-log-angular/)
 
 
 ### QUICK START
