@@ -9,9 +9,6 @@ This project uses:
 * PHP
 * MySQL
 
-<iframe style="border: 0; height: 550px; width: 900px;" src="http://activitylogdemo.ajdrafts.com/"></iframe>
-
-
 ### QUICK START
 1. Clone repo *activity-log-angular*
 2. Clone repo *activity-log-service* into a web server directory that supports php
@@ -31,3 +28,6 @@ This project uses:
 6. Navigate to the url (ex: http://localhost/activity-log/) and start logging
 
 Enjoy!
+
+### DEMO
+<iframe style="border: 0; height: 550px; width: 900px;" src="//activitylogdemo.ajdrafts.com/"></iframe>
