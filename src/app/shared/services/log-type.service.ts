@@ -25,4 +25,12 @@ export class LogTypeService {
 
     return this.http.put(environment.logTypeApiUrl, body);
   }
+
+  deleteLogType(typeId: number): Observable<any> {
+    let options = {
+      body: { Id: typeId }
+    };
+
+    return this.http.request('delete', environment.logTypeApiUrl, options);
+  }
 }

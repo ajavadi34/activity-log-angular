@@ -19,13 +19,18 @@
     <div class="table-responsive">
       <table class="table">
         <tr *ngFor="let type of logTypes">
-          <td class="align-middle">
-            <span *ngIf="type.typeId !== editTypeId" [innerHTML]="type.name"></span>
-            <input *ngIf="type.typeId == editTypeId" type="text" class="form-control" [(ngModel)]="type.name" />
-          </td>
           <td class="text-right">
             <button class="btn btn-outline-primary" (click)="toggleRow(type.typeId)">
               <i class="fa" [ngClass]="type.typeId !== editTypeId ? 'fa-pencil' : 'fa-floppy-o'" aria-hidden="true"></i>
+            </button>
+          </td>
+          <td class="align-middle type-name">
+            <span *ngIf="type.typeId !== editTypeId" [innerHTML]="type.name"></span>
+            <input *ngIf="type.typeId == editTypeId" type="text" class="form-control" [(ngModel)]="type.name" />
+          </td>
+          <td>
+            <button class="btn btn-outline-primary" (click)="deleteType(type.typeId)" [disabled]="type.hasTasks">
+              <i class="fa fa-trash" aria-hidden="true" title="Delete log"></i>
             </button>
           </td>
         </tr>

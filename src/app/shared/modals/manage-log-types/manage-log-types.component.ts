@@ -59,4 +59,9 @@ export class ManageLogTypesComponent implements OnInit {
       this.editTypeId = undefined;
     }
   }
+
+  deleteType(typeId: number): void {    
+    if (confirm('Are you sure you want to delete this tab?'))
+      this.logTypeService.deleteLogType(typeId).subscribe(res => this.close(), err => console.log(err)); 
+  }
 }
