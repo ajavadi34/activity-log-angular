@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { GridData } from '../shared/models/Grid';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap/modal/modal';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LogModalComponent } from '../shared/modals/log-modal/log-modal.component';
 import { LogDataService } from '../shared/services/log-data.service';
 import { ConfirmationModalComponent } from '../shared/modals/confirmation-modal/confirmation-modal.component';

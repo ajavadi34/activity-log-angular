@@ -25,7 +25,7 @@ const routes = [];
   ],
   imports: [
     BrowserModule,
-    NgbModule.forRoot(),
+    NgbModule,
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
