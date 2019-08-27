@@ -9,7 +9,7 @@ Data is refreshed daily
 This project uses:
 
 * Bootstrap 4
-* Angular 6
+* Angular 8
 * PHP
 * MySQL
 
