@@ -4,7 +4,7 @@ This project is a simple activity logger displayed in a grid.
 
 ## DEMO
 Data is refreshed daily
-<iframe style="border: 2px #ccc solid; height: 630px; width: 100%;" src="http://activitylogdemo.ajdrafts.com/"></iframe>
+<iframe style="border: 2px #ccc solid; height: 630px; width: 100%;" src="//activitylogdemo.ajdrafts.com/"></iframe>
 
 This project uses:
 
