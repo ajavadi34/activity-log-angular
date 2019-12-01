@@ -29,8 +29,8 @@
             <input *ngIf="type.typeId == editTypeId" type="text" class="form-control" [(ngModel)]="type.name" />
           </td>
           <td>
-            <button class="btn btn-outline-primary" (click)="deleteType(type.typeId)" [disabled]="type.hasTasks">
-              <i class="fa fa-trash" aria-hidden="true" title="Delete log"></i>
+            <button class="btn btn-outline-primary" (click)="deleteType(type.typeId)" [disabled]="type.hasTasks" [title]="getTitle(type.hasTasks)">
+              <i class="fa fa-trash" aria-hidden="true"></i>
             </button>
           </td>
         </tr>

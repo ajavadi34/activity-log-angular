@@ -64,4 +64,8 @@ export class ManageLogTypesComponent implements OnInit {
     if (confirm('Are you sure you want to delete this tab?'))
       this.logTypeService.deleteLogType(typeId).subscribe(res => this.close(), err => console.log(err)); 
   }
+
+  getTitle(hasTasks: boolean): string {
+    return hasTasks ? "Delete disabled" : "Delete log";
+  }
 }
