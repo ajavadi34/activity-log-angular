@@ -8,6 +8,7 @@ import { ConfirmationModalComponent } from '../shared/modals/confirmation-modal/
 import { Log } from '../shared/models/Log';
 import { LogType } from '../shared/models/LogType';
 import { ManageLogTypesComponent } from '../shared/modals/manage-log-types/manage-log-types.component';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-grid',
@@ -67,6 +68,7 @@ export class GridComponent implements OnInit {
     if (typeIndex > -1) {
       newLogDefault.type = this.grid.types[typeIndex].name;
     }
+    newLogDefault.date = moment().format('YYYY/MM/DD');
     this.showLogForm(newLogDefault);
   }
 
