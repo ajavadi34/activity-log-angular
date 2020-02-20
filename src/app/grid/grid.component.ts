@@ -31,7 +31,7 @@ export class GridComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loadData();
+    this.loadData(this.logTypeId);
   }
 
   deleteLog(logId: number, event: any): void {
@@ -78,6 +78,11 @@ export class GridComponent implements OnInit {
 
     let log: Log = this.grid.rows.find(l => l.id === logId);
     this.showLogForm(log);
+  }
+
+  reset(): void {
+    this.logTypeId = 0;
+    this.reloadLogs();
   }
 
   reloadLogs(): void {
@@ -142,7 +147,7 @@ export class GridComponent implements OnInit {
     });
   }
 
-  private loadData(logType = 0, pageNumber = 1): void {
+  private loadData(logType, pageNumber = 1): void {
     this.logService.getLogs(logType, pageNumber).subscribe(
       (data: GridData) => {
         // sets all returned data
