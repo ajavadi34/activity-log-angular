@@ -9,7 +9,7 @@ import { LogTypeService } from '../../services/log-type.service';
   templateUrl: './manage-log-types.component.html',
   styleUrls: ['./manage-log-types.component.css']
 })
-export class ManageLogTypesComponent implements OnInit {
+export class ManageLogTypesComponent {
   @Input() logTypes: LogType[];
   public editTypeId: number;
   public newTypeName: string;
@@ -20,26 +20,25 @@ export class ManageLogTypesComponent implements OnInit {
     private logTypeService: LogTypeService
   ) { }
 
-  ngOnInit() {
-  }
-
   close(): void {
     this.activeModal.dismiss();
   }
 
   addType(): void {
-    if (this.newTypeName && this.newTypeName.length > 0) {
-      this.logTypeService.createLogType(this.newTypeName).subscribe(res => {
-        // append new log type to type array
-        let log = LogType.mapJsonResponse(res);
-        this.logTypes.push(log[0]);
-
-        // reset field
-        this.newTypeName = null;
-      }, err => {
-        console.log(err);
-      });
+    if (!this.newTypeName || this.newTypeName.trim().length === 0) {
+      return;
     }
+
+    this.logTypeService.createLogType(this.newTypeName).subscribe(res => {
+      // append new log type to type array
+      let log = LogType.mapJsonResponse(res);
+      this.logTypes.push(log[0]);
+
+      // reset field
+      this.newTypeName = null;
+    }, err => {
+      console.log(err);
+    });
   }
 
   toggleRow(typeId: number): void {
@@ -61,7 +60,7 @@ export class ManageLogTypesComponent implements OnInit {
   }
 
   deleteType(typeId: number): void {    
-    if (confirm('Are you sure you want to delete this tab?'))
+    if (confirm('Are you sure you want to delete this type?'))
       this.logTypeService.deleteLogType(typeId).subscribe(res => this.close(), err => console.log(err)); 
   }
 
