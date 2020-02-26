@@ -20,6 +20,7 @@ export class GridComponent implements OnInit {
   logTypeId: number;
   isFirstPage: boolean;
   isLastPage: boolean;
+  columnTitles: string[];
 
   constructor(
     private modalService: NgbModal,
@@ -28,6 +29,13 @@ export class GridComponent implements OnInit {
     //default dropdown
     this.logTypeId = 0;
     this.grid = new GridData();
+    this.columnTitles = [
+      'Type',
+      'Title',
+      'Description',
+      'Link',
+      'Date'
+    ];
   }
 
   ngOnInit() {
