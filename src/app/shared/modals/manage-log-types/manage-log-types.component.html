@@ -26,10 +26,10 @@
           </td>
           <td class="align-middle type-name">
             <span *ngIf="type.typeId !== editTypeId" [innerHTML]="type.name"></span>
-            <input *ngIf="type.typeId == editTypeId" type="text" class="form-control" [(ngModel)]="type.name" />
+            <input *ngIf="type.typeId == editTypeId" type="text" class="form-control" [(ngModel)]="type.name" (keyup.enter)="save(type.typeId)" />
           </td>
           <td>
-            <button class="btn btn-outline-primary" (click)="deleteType(type.typeId)" [disabled]="type.hasTasks" [title]="getTitle(type.hasTasks)">
+            <button class="btn btn-outline-primary" (click)="deleteType(type.typeId)" [disabled]="type.hasTasks || editTypeId" [title]="getTitle(type.hasTasks)">
               <i class="fa fa-trash" aria-hidden="true"></i>
             </button>
           </td>

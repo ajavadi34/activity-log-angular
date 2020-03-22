@@ -45,18 +45,22 @@ export class ManageLogTypesComponent {
     if (!this.editTypeId) {
       // put row in edit mode
       this.editTypeId = typeId;
+      return;
     }
-    else {
-      // a row was in edit mode
-      let logType: LogType = this.logTypes.find(l => l.typeId == typeId);
-      if (this.editTypeId == typeId) {
-        // save updated type name
-        this.logTypeService.updateLogType(logType).subscribe(res => console.log(res), err => console.log(err));
-      }
 
-      // removed row from edit mode
-      this.editTypeId = undefined;
+    this.save(typeId);
+  }
+
+  save(typeId: number): void {
+    // a row was in edit mode
+    let logType: LogType = this.logTypes.find(l => l.typeId == typeId);
+    if (this.editTypeId == typeId) {
+      // save updated type name
+      this.logTypeService.updateLogType(logType).subscribe(res => console.log(res), err => console.log(err));
     }
+
+    // removed row from edit mode
+    this.editTypeId = undefined;
   }
 
   deleteType(typeId: number): void {    
