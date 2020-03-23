@@ -23,7 +23,7 @@
             "styles": [
               "src/assets/styles/bootstrap-theme-journal.css",
               "node_modules/font-awesome/css/font-awesome.css",
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -75,7 +75,7 @@
             "styles": [
               "src/assets/styles/bootstrap-theme-journal.css",
               "node_modules/font-awesome/css/font-awesome.css",
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "assets": [
               "src/assets",
@@ -127,7 +127,7 @@
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
-      "styleext": "css"
+      "styleext": "scss"
     },
     "@schematics/angular:directive": {
       "prefix": "app"

@@ -1,4 +1,10 @@
+@import './assets/styles/variables.scss';
+
 /* You can add global styles to this file, and also import other style files */
 .pointer {
     cursor: pointer;
+}
+
+.text-primary {
+    color: $primary-color;
 }
