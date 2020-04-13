@@ -8,7 +8,9 @@
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "start:docker:windows": "docker run -it -p 80:4200 -v %cd%:/var/www -w \"/var/www\" node npm start",
+    "start:docker:unix": "docker run -it -p 80:4200 -v $(pwd):/var/www -w \"/var/www\" node npm start"
   },
   "private": true,
   "dependencies": {
