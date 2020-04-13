@@ -5,9 +5,9 @@ This project is a simple activity logger displayed in a grid.
 This project uses:
 
 * Bootstrap 4
-* Angular 8
-* PHP
-* MySQL
+* Angular 9
+* PHP 5.6
+* MySQL 5.6
 
 ## [View Demo](https://ajavadi34.github.io/activity-log-angular/)
 
