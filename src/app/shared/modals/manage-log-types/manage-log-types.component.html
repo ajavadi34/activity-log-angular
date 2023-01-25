@@ -9,32 +9,33 @@
     <div class="input-group mb-3">
       <input type="text" class="form-control" placeholder="New type name" [(ngModel)]="newTypeName"
         (keyup.enter)="addType()" />
-      <div class="input-group-append">
-        <button class="btn btn-outline-primary" type="button" (click)="addType()">Add</button>
-      </div>
+      <button class="btn btn-outline-primary" type="button" (click)="addType()">Add</button>
     </div>
 
     <div class="table-responsive">
       <table class="table">
-        <tr *ngFor="let type of logTypes">
-          <td class="text-end">
-            <button class="btn btn-outline-primary" (click)="toggleRow(type.typeId)"
-              [title]="type.typeId !== editTypeId ? 'edit' : 'save'">
-              <i class="fa" [ngClass]="type.typeId !== editTypeId ? 'fa-pencil' : 'fa-floppy-o'" aria-hidden="true"></i>
-            </button>
-          </td>
-          <td class="align-middle type-name">
-            <span *ngIf="type.typeId !== editTypeId" [innerHTML]="type.name"></span>
-            <input *ngIf="type.typeId == editTypeId" type="text" class="form-control" [(ngModel)]="type.name"
-              (keyup.enter)="save(type.typeId)" />
-          </td>
-          <td>
-            <button class="btn btn-outline-primary" (click)="deleteType(type.typeId)"
-              [disabled]="type.hasTasks || editTypeId" [title]="getTitle(type.hasTasks)">
-              <i class="fa fa-trash" aria-hidden="true"></i>
-            </button>
-          </td>
-        </tr>
+        <tbody>
+          <tr *ngFor="let type of logTypes">
+            <td class="text-end">
+              <button class="btn btn-outline-primary" (click)="toggleRow(type.typeId)"
+                [title]="type.typeId !== editTypeId ? 'edit' : 'save'">
+                <i class="fa" [ngClass]="type.typeId !== editTypeId ? 'fa-pencil' : 'fa-floppy-o'"
+                  aria-hidden="true"></i>
+              </button>
+            </td>
+            <td class="align-middle type-name">
+              <span *ngIf="type.typeId !== editTypeId" [innerHTML]="type.name"></span>
+              <input *ngIf="type.typeId == editTypeId" type="text" class="form-control" [(ngModel)]="type.name"
+                (keyup.enter)="save(type.typeId)" />
+            </td>
+            <td>
+              <button class="btn btn-outline-primary" (click)="deleteType(type.typeId)"
+                [disabled]="type.hasTasks || editTypeId" [title]="getTitle(type.hasTasks)">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
       </table>
     </div>
   </div>
