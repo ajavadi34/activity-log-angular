@@ -19,23 +19,26 @@
         </a>
     </div>
     <div class="col-sm-10">
-        <div class="form-inline pull-right">
-            <label class="pr-2">Filter By:</label>
-            <select class="form-control" (change)="reloadLogs()" [(ngModel)]="logTypeId">
-                <option value="0">None</option>
-                <option *ngFor="let type of grid.types" [value]="type.typeId">{{ type.name }}</option>
-            </select>
-
-            <ul class="pagination mt-3 ml-3">
-                <li class="page-item" [class.disabled]="isFirstPage">
-                    <a class="page-link" [routerLink]="[]" (click)="previousPage()"><i class="fa fa-chevron-left"
-                            aria-hidden="true"></i></a>
-                </li>
-                <li class="page-item" [class.disabled]="isLastPage">
-                    <a class="page-link" [routerLink]="[]" (click)="nextPage()"><i class="fa fa-chevron-right"
-                            aria-hidden="true"></i></a>
-                </li>
-            </ul>
+        <div class="row justify-content-end">
+            <label class="col-sm-2 col-form-label">Filter By:</label>
+            <div class="col-sm-4">
+                <select class="form-select" (change)="reloadLogs()" [(ngModel)]="logTypeId">
+                    <option value="0">None</option>
+                    <option *ngFor="let type of grid.types" [value]="type.typeId">{{ type.name }}</option>
+                </select>
+            </div>
+            <div class="col-sm-2">
+                <ul class="pagination">
+                    <li class="page-item" [class.disabled]="isFirstPage">
+                        <a class="page-link" [routerLink]="[]" (click)="previousPage()"><i class="fa fa-chevron-left"
+                                aria-hidden="true"></i></a>
+                    </li>
+                    <li class="page-item" [class.disabled]="isLastPage">
+                        <a class="page-link" [routerLink]="[]" (click)="nextPage()"><i class="fa fa-chevron-right"
+                                aria-hidden="true"></i></a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
