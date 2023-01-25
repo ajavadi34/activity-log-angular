@@ -20,8 +20,8 @@
     </div>
     <div class="col-sm-10">
         <div class="row justify-content-end">
-            <label class="col-sm-2 col-form-label">Filter By:</label>
-            <div class="col-sm-4">
+            <label class="col-sm-2 col-form-label text-nowrap text-sm-end">Filter By:</label>
+            <div class="col-sm-4 mb-2">
                 <select class="form-select" (change)="reloadLogs()" [(ngModel)]="logTypeId">
                     <option value="0">None</option>
                     <option *ngFor="let type of grid.types" [value]="type.typeId">{{ type.name }}</option>
