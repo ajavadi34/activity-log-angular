@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ManageLogTypesComponent } from './manage-log-types.component';
 
@@ -6,7 +6,7 @@ describe('ManageLogTypesComponent', () => {
   let component: ManageLogTypesComponent;
   let fixture: ComponentFixture<ManageLogTypesComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ManageLogTypesComponent ]
     })

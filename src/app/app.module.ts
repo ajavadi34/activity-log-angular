@@ -29,7 +29,7 @@ const routes = [];
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })
   ],
   providers: [LogDataService, LogTypeService],
   bootstrap: [GridComponent],
