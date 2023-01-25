@@ -111,7 +111,6 @@
       }
     }
   },
-  "defaultProject": "activity-log-angular",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",

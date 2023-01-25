@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, UntypedFormBuilder, Validators } from '@angular/forms';
 import { Log } from '../../models/Log';
 import { LogType } from '../../models/LogType';
 import * as moment from 'moment';
@@ -14,10 +14,10 @@ import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 export class LogModalComponent implements OnInit {
   @Input() log: Log;
   @Input() logTypes: LogType[];
-  logForm: FormGroup;
+  logForm: UntypedFormGroup;
   submitted: boolean;
 
-  constructor(private activeModal: NgbActiveModal, private formBuilder: FormBuilder) {
+  constructor(private activeModal: NgbActiveModal, private formBuilder: UntypedFormBuilder) {
     this.submitted = false;
   }
 
@@ -25,11 +25,11 @@ export class LogModalComponent implements OnInit {
     const webpageRegex = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
 
     this.logForm = this.formBuilder.group({
-      type: new FormControl(this.getTypeIdFromName(this.log.type), [Validators.required]),
-      title: new FormControl(this.log.title, [Validators.required]),
-      description: new FormControl(this.log.description),
-      link: new FormControl(this.log.link, [Validators.pattern(webpageRegex)]),
-      date: new FormControl(this.getDatePickerObj(this.log.date), Validators.required)
+      type: new UntypedFormControl(this.getTypeIdFromName(this.log.type), [Validators.required]),
+      title: new UntypedFormControl(this.log.title, [Validators.required]),
+      description: new UntypedFormControl(this.log.description),
+      link: new UntypedFormControl(this.log.link, [Validators.pattern(webpageRegex)]),
+      date: new UntypedFormControl(this.getDatePickerObj(this.log.date), Validators.required)
     });
   }
 
