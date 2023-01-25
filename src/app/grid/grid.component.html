@@ -8,13 +8,13 @@
     </div>
     <div class="col text-right">
         <span *ngIf="grid.rows && grid.rows.length" [innerHTML]="getPaginationText()"></span>&nbsp;
-        <a [routerLink]="" (click)="manageLogTypes()"><i class="fa fa-cog" aria-hidden="true"></i></a>
+        <a [routerLink]="[]" (click)="manageLogTypes()"><i class="fa fa-cog" aria-hidden="true"></i></a>
     </div>
 </div>
 
 <div class="row mb-2">
     <div class="col-sm-2 align-self-center">
-        <a [routerLink]="" title="Add new log" (click)="createLog()">
+        <a [routerLink]="[]" title="Add new log" (click)="createLog()">
             <i class="fa fa-2x fa-plus-square-o add-new-record" aria-hidden="true"></i>
         </a>
     </div>
@@ -28,10 +28,10 @@
 
             <ul class="pagination mt-3 ml-3">
                 <li class="page-item" [class.disabled]="isFirstPage">
-                    <a class="page-link" [routerLink]="" (click)="previousPage()"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+                    <a class="page-link" [routerLink]="[]" (click)="previousPage()"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
                 </li>
                 <li class="page-item" [class.disabled]="isLastPage">
-                    <a class="page-link" [routerLink]="" (click)="nextPage()"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                    <a class="page-link" [routerLink]="[]" (click)="nextPage()"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
                 </li>
             </ul>
         </div>

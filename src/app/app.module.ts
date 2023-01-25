@@ -16,23 +16,22 @@ import { LogTypeService } from './shared/services/log-type.service';
 const routes = [];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    GridComponent,
-    LogModalComponent,
-    ConfirmationModalComponent,
-    ManageLogTypesComponent
-  ],
-  imports: [
-    BrowserModule,
-    NgbModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    FormsModule,
-    RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })
-  ],
-  providers: [LogDataService, LogTypeService],
-  bootstrap: [GridComponent],
-  entryComponents: [LogModalComponent, ConfirmationModalComponent, ManageLogTypesComponent]
+    declarations: [
+        AppComponent,
+        GridComponent,
+        LogModalComponent,
+        ConfirmationModalComponent,
+        ManageLogTypesComponent
+    ],
+    imports: [
+        BrowserModule,
+        NgbModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        FormsModule,
+        RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })
+    ],
+    providers: [LogDataService, LogTypeService],
+    bootstrap: [GridComponent]
 })
 export class AppModule { }
