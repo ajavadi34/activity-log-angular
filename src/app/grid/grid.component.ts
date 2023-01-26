@@ -9,6 +9,7 @@ import { Log } from '../shared/models/Log';
 import { LogType } from '../shared/models/LogType';
 import { ManageLogTypesComponent } from '../shared/modals/manage-log-types/manage-log-types.component';
 import * as moment from 'moment';
+import * as printJS from 'print-js';
 
 @Component({
   selector: 'app-grid',
@@ -104,6 +105,10 @@ export class GridComponent implements OnInit {
       + (this.grid.rows.length + (this.grid.pageSize * (this.grid.pageNumber - 1)))
       + ' of '
       + this.grid.totalRows;
+  }
+
+  print(): void {
+    printJS('log-table', 'html');
   }
 
   previousPage(): void {

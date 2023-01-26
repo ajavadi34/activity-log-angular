@@ -9,6 +9,7 @@
     <div class="col text-end">
         <span *ngIf="grid.rows && grid.rows.length" [innerHTML]="getPaginationText()"></span>&nbsp;
         <a [routerLink]="[]" (click)="manageLogTypes()"><i class="fa fa-cog" aria-hidden="true"></i></a>
+        <a [routerLink]="[]" (click)="print()" class="ms-2"><i class="fa fa-print" aria-hidden="true"></i></a>
     </div>
 </div>
 
@@ -44,7 +45,7 @@
 </div>
 
 <div class="table-responsive">
-    <table class="table text-secondary" *ngIf="grid.rows">
+    <table id="log-table" class="table text-secondary" *ngIf="grid.rows">
         <thead>
             <tr>
                 <th scope="col"></th>
