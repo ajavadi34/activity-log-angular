@@ -4,8 +4,8 @@ This project is a simple activity logger displayed in a grid.
 
 This project uses:
 
-* Bootstrap 4
-* Angular 9
+* Bootstrap 5
+* Angular 15
 * PHP 5.6
 * MySQL 5.6
 
