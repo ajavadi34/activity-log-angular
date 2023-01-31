@@ -108,7 +108,13 @@ export class GridComponent implements OnInit {
   }
 
   print(): void {
-    printJS('log-table', 'html');
+    printJS({
+	    printable: this.grid.rows,
+	    properties: this.columnTitles.map(x => x.toLocaleLowerCase()),
+	    type: 'json',
+	    gridHeaderStyle: 'color: #000;  border: 2px solid #000;',
+	    gridStyle: 'border: 2px solid #000;'
+	});
   }
 
   previousPage(): void {
