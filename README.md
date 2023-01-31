@@ -6,7 +6,7 @@ This project uses:
 
 * Bootstrap 5
 * Angular 15
-* PHP 5.6
+* PHP 7.4
 * MySQL 5.6
 
 ## [View Demo](https://ajavadi34.github.io/activity-log-angular/)
