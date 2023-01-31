@@ -8,10 +8,10 @@ Data is refreshed daily
 
 This project uses:
 
-* Bootstrap 4
-* Angular 8
-* PHP
-* MySQL
+* Bootstrap 5
+* Angular 15
+* PHP 7.4
+* MySQL 5.6
 
 ### QUICK START
 1. Clone repo *activity-log-angular*
