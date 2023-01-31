@@ -25,11 +25,9 @@
     <div class="input-group">
       <input class="form-control" name="dp" formControlName="date" (click)="d.toggle()" ngbDatepicker
         #d="ngbDatepicker">
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
-          <i class="fa fa-calendar" aria-hidden="true"></i>
-        </button>
-      </div>
+      <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+        <i class="fa fa-calendar" aria-hidden="true"></i>
+      </button>
     </div>
   </div>
   <div class="modal-footer">
