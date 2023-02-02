@@ -7,6 +7,7 @@
     "start": "npm install && ng serve --host 0.0.0.0 --port 4200",
     "build": "ng build --configuration production",
     "test": "ng test",
+    "test:ci": "ng test --browsers=ChromeHeadless --watch=false --code-coverage",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "start:docker:windows": "docker run -it -p 80:4200 -v %cd%:/var/www -w \"/var/www\" node npm start",
