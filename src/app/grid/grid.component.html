@@ -48,18 +48,18 @@
     <table class="table text-secondary" *ngIf="grid.rows">
         <thead>
             <tr>
-                <th scope="col"></th>
+                <!-- <th scope="col"></th> -->
                 <th scope="col" *ngFor="let title of columnTitles">
                     {{ title }}
                 </th>
-                <th scope="col"></th>
+                <!-- <th scope="col"></th> -->
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let row of grid.rows">
-                <td>
+                <!-- <td>
                     <i class="fa fa-pencil" aria-hidden="true" title="Edit log" (click)="editLog(row.id)"></i>
-                </td>
+                </td> -->
                 <td>
                     {{ row.type }}
                 </td>
@@ -69,17 +69,17 @@
                 <td>
                     {{ row.description }}
                 </td>
-                <td>
+                <!-- <td>
                     <a *ngIf="row.link" [href]="row.link" target="_blank"><i class="fa fa-external-link"
                             aria-hidden="true"></i></a>
-                </td>
+                </td> -->
                 <td>
                     {{ row.date | date:'shortDate' }}
                 </td>
-                <td>
+                <!-- <td>
                     <i class="fa fa-trash fa-1x" aria-hidden="true" title="Delete log"
                         (click)="deleteLog(row.id, $event)"></i>
-                </td>
+                </td> -->
             </tr>
         </tbody>
     </table>

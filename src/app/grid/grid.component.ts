@@ -34,7 +34,7 @@ export class GridComponent implements OnInit {
       'Type',
       'Title',
       'Description',
-      'Link',
+      // 'Link',
       'Date'
     ];
   }
