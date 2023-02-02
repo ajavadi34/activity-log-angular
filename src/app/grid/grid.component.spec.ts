@@ -1,4 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { LogDataService } from '../shared/services/log-data.service';
 
 import { GridComponent } from './grid.component';
 
@@ -8,9 +10,11 @@ describe('GridComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ GridComponent ]
+      imports: [HttpClientModule],
+      declarations: [GridComponent],
+      providers: [LogDataService]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

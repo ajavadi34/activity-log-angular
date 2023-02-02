@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { LogModalComponent } from './log-modal.component';
 
@@ -8,14 +10,31 @@ describe('LogModalComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ LogModalComponent ]
+      imports: [
+        NgbModule,
+        FormsModule,
+        ReactiveFormsModule
+      ],
+      declarations: [LogModalComponent],
+      providers: [NgbActiveModal]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(LogModalComponent);
     component = fixture.componentInstance;
+    component.log = {
+      id: 1,
+      type: 'test',
+      title: '',
+      description: '',
+      link: '',
+      date: ''
+    };
+
+    component.logTypes = [];
+
     fixture.detectChanges();
   });
 

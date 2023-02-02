@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { LogType } from '../../models/LogType';
-import { LogDataService } from '../../services/log-data.service';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { LogTypeService } from '../../services/log-type.service';
 
@@ -15,7 +14,6 @@ export class ManageLogTypesComponent {
   public newTypeName: string;
 
   constructor(
-    private logService: LogDataService,
     private activeModal: NgbActiveModal,
     private logTypeService: LogTypeService
   ) { }
