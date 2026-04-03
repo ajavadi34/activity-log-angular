@@ -12,9 +12,10 @@ import * as moment from 'moment';
 import * as printJS from 'print-js';
 
 @Component({
-  selector: 'app-grid',
-  templateUrl: './grid.component.html',
-  styleUrls: ['./grid.component.css']
+    selector: 'app-grid',
+    templateUrl: './grid.component.html',
+    styleUrls: ['./grid.component.css'],
+    standalone: false
 })
 export class GridComponent implements OnInit {
   grid: GridData;

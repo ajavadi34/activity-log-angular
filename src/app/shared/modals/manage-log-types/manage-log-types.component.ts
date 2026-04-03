@@ -4,9 +4,10 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { LogTypeService } from '../../services/log-type.service';
 
 @Component({
-  selector: 'app-manage-log-types',
-  templateUrl: './manage-log-types.component.html',
-  styleUrls: ['./manage-log-types.component.css']
+    selector: 'app-manage-log-types',
+    templateUrl: './manage-log-types.component.html',
+    styleUrls: ['./manage-log-types.component.css'],
+    standalone: false
 })
 export class ManageLogTypesComponent {
   @Input() logTypes: LogType[];

@@ -7,9 +7,10 @@ import * as moment from 'moment';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-log-modal',
-  templateUrl: './log-modal.component.html',
-  styleUrls: ['./log-modal.component.css']
+    selector: 'app-log-modal',
+    templateUrl: './log-modal.component.html',
+    styleUrls: ['./log-modal.component.css'],
+    standalone: false
 })
 export class LogModalComponent implements OnInit {
   @Input() log: Log;
