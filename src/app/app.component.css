@@ -1,0 +1,26 @@
+.theme-toggle-bar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 12px 16px 0;
+}
+
+.btn-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: var(--btn-toggle-bg);
+  color: var(--btn-toggle-color);
+  border: 1px solid var(--btn-toggle-border);
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background .15s, color .15s;
+}
+
+.btn-theme-toggle:hover {
+  background: var(--btn-toggle-bg);
+  opacity: .85;
+}

@@ -1,0 +1,172 @@
+// ── Dark / Light theme via data-theme on <html> ──────────────────────────────
+// Default (no attribute) = dark. Light is opt-in via data-theme="light".
+
+:root {
+  // Dark defaults
+  --bg-body:          #0d1117;
+  --bg-surface:       #141922;
+  --bg-surface-2:     #1a2235;
+  --border-color:     #2a3347;
+  --text-primary:     #e8edf4;
+  --text-secondary:   #94a3b8;
+  --text-muted:       #6b7f99;
+  --text-table:       #dde4ed;
+  --link-color:       #818cf8;
+  --link-hover:       #a5b0fb;
+  --input-bg:         #1a2235;
+  --input-border:     #2a3347;
+  --input-text:       #e8edf4;
+  --input-placeholder:#6b7f99;
+  --table-stripe:     rgba(255,255,255,.02);
+  --table-hover:      rgba(255,255,255,.04);
+  --modal-bg:         #141922;
+  --modal-header-bg:  #1a2235;
+  --scrollbar-thumb:  #2a3347;
+  --danger:           #f87171;
+  --success:          #34d399;
+  --primary:          #818cf8;
+  --btn-toggle-bg:    rgba(129,140,248,.15);
+  --btn-toggle-border:rgba(129,140,248,.3);
+  --btn-toggle-color: #818cf8;
+  --select-bg:        #1a2235;
+  --pagination-bg:    #141922;
+  --pagination-border:#2a3347;
+  --pagination-color: #94a3b8;
+  --pagination-active:#818cf8;
+}
+
+[data-theme="light"] {
+  --bg-body:          #f4f6f9;
+  --bg-surface:       #ffffff;
+  --bg-surface-2:     #f0f2f5;
+  --border-color:     #dee2e6;
+  --text-primary:     #1a1f2e;
+  --text-secondary:   #495057;
+  --text-muted:       #6c757d;
+  --text-table:       #212529;
+  --link-color:       #6366f1;
+  --link-hover:       #4f46e5;
+  --input-bg:         #ffffff;
+  --input-border:     #ced4da;
+  --input-text:       #212529;
+  --input-placeholder:#6c757d;
+  --table-stripe:     rgba(0,0,0,.02);
+  --table-hover:      rgba(0,0,0,.04);
+  --modal-bg:         #ffffff;
+  --modal-header-bg:  #f8f9fa;
+  --scrollbar-thumb:  #ced4da;
+  --danger:           #dc3545;
+  --success:          #198754;
+  --primary:          #6366f1;
+  --btn-toggle-bg:    rgba(99,102,241,.1);
+  --btn-toggle-border:rgba(99,102,241,.3);
+  --btn-toggle-color: #4f46e5;
+  --select-bg:        #ffffff;
+  --pagination-bg:    #ffffff;
+  --pagination-border:#dee2e6;
+  --pagination-color: #495057;
+  --pagination-active:#6366f1;
+}
+
+// ── Apply vars ────────────────────────────────────────────────────────────────
+
+body {
+  background-color: var(--bg-body) !important;
+  color: var(--text-primary) !important;
+  transition: background-color .25s, color .25s;
+}
+
+// Headings & text
+h1, h2, h3, h4, h5, h6 { color: var(--text-primary) !important; }
+
+.text-secondary { color: var(--text-secondary) !important; }
+.text-muted     { color: var(--text-muted) !important; }
+
+// Links
+a { color: var(--link-color) !important; text-decoration: none; }
+a:hover { color: var(--link-hover) !important; }
+
+// Primary color override (replaces Journal red)
+.text-primary { color: var(--primary) !important; }
+
+// Table
+table { color: var(--text-table) !important; }
+.table { color: var(--text-table) !important; background-color: var(--bg-surface) !important; }
+.table th { color: var(--text-muted) !important; border-color: var(--border-color) !important; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
+.table td { color: var(--text-table) !important; border-color: var(--border-color) !important; }
+.table-striped > tbody > tr:nth-of-type(odd) > * { background-color: var(--table-stripe) !important; }
+.table-hover  > tbody > tr:hover > *             { background-color: var(--table-hover)  !important; }
+
+// Form controls
+.form-select, .form-control {
+  background-color: var(--input-bg) !important;
+  border-color: var(--input-border) !important;
+  color: var(--input-text) !important;
+}
+.form-select:focus, .form-control:focus {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 .2rem rgba(129,140,248,.2) !important;
+}
+.form-control::placeholder { color: var(--input-placeholder) !important; }
+
+// Pagination
+.pagination .page-link {
+  background-color: var(--pagination-bg) !important;
+  border-color: var(--pagination-border) !important;
+  color: var(--pagination-color) !important;
+}
+.pagination .page-item.active .page-link {
+  background-color: var(--pagination-active) !important;
+  border-color: var(--pagination-active) !important;
+  color: #fff !important;
+}
+.pagination .page-item.disabled .page-link { opacity: .4; }
+
+// Modals
+.modal-content {
+  background-color: var(--modal-bg) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+.modal-header {
+  background-color: var(--modal-header-bg) !important;
+  border-bottom-color: var(--border-color) !important;
+}
+.modal-footer {
+  border-top-color: var(--border-color) !important;
+}
+.modal-title { color: var(--text-primary) !important; }
+
+// Buttons
+.btn-primary {
+  background-color: var(--primary) !important;
+  border-color: var(--primary) !important;
+  color: #fff !important;
+}
+.btn-outline-secondary {
+  border-color: var(--border-color) !important;
+  color: var(--text-secondary) !important;
+}
+.btn-outline-secondary:hover {
+  background-color: var(--bg-surface-2) !important;
+}
+
+// Labels / form-labels
+.form-label, label { color: var(--text-secondary) !important; }
+
+// Input groups
+.input-group-text {
+  background-color: var(--bg-surface-2) !important;
+  border-color: var(--input-border) !important;
+  color: var(--text-secondary) !important;
+}
+
+// Container surface
+.container {
+  background-color: var(--bg-body);
+}
+
+// Scrollbar
+::-webkit-scrollbar       { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-body); }
+::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 3px; }
