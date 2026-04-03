@@ -61,18 +61,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "activity-log-angular:build"
+            "buildTarget": "activity-log-angular:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "activity-log-angular:build:production"
+              "buildTarget": "activity-log-angular:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "activity-log-angular:build"
+            "buildTarget": "activity-log-angular:build"
           }
         },
         "test": {
