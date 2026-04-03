@@ -1,4 +1,16 @@
+:host {
+    display: block;
+    padding: 8px 16px 24px;
+}
+
 .table-responsive i.fa {
     font-size: 20px;
     cursor: pointer;
+}
+
+.header-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    margin-left: 16px;
 }

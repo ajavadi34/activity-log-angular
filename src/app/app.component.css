@@ -1,26 +1,32 @@
 .theme-toggle-bar {
   display: flex;
   justify-content: flex-end;
-  padding: 12px 16px 0;
+  padding: 14px 24px 0;
 }
 
 .btn-theme-toggle {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 6px 14px;
-  background: var(--btn-toggle-bg);
-  color: var(--btn-toggle-color);
-  border: 1px solid var(--btn-toggle-border);
+  padding: 7px 16px;
+  background: rgba(129, 140, 248, 0.15);
+  color: #818cf8;
+  border: 1px solid rgba(129, 140, 248, 0.35);
   border-radius: 8px;
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
   font-family: inherit;
-  transition: background .15s, color .15s;
+  transition: background .15s, opacity .15s;
+  line-height: 1;
+}
+
+[data-theme="light"] .btn-theme-toggle {
+  background: rgba(99, 102, 241, 0.1);
+  color: #4f46e5;
+  border-color: rgba(99, 102, 241, 0.3);
 }
 
 .btn-theme-toggle:hover {
-  background: var(--btn-toggle-bg);
-  opacity: .85;
+  opacity: .8;
 }
