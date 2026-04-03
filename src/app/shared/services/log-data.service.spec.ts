@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { TestBed, inject } from '@angular/core/testing';
 
 import { LogDataService } from './log-data.service';
@@ -6,9 +6,9 @@ import { LogDataService } from './log-data.service';
 describe('LogDataService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientModule],
-      providers: [LogDataService]
-    });
+    imports: [],
+    providers: [LogDataService, provideHttpClient(withInterceptorsFromDi())]
+});
   });
 
   it('should be created', inject([LogDataService], (service: LogDataService) => {

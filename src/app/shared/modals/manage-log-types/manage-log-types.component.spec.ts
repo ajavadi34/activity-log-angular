@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { LogTypeService } from '../../services/log-type.service';
@@ -11,12 +11,14 @@ describe('ManageLogTypesComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientModule],
-      declarations: [ManageLogTypesComponent],
-      providers: [
+    declarations: [ManageLogTypesComponent],
+    imports: [],
+    providers: [
         NgbActiveModal,
-        LogTypeService]
-    })
+        LogTypeService,
+        provideHttpClient(withInterceptorsFromDi())
+    ]
+})
       .compileComponents();
   }));
 

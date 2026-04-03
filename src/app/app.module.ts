@@ -8,30 +8,23 @@ import { LogModalComponent } from './shared/modals/log-modal/log-modal.component
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LogDataService } from './shared/services/log-data.service';
 import { ConfirmationModalComponent } from './shared/modals/confirmation-modal/confirmation-modal.component';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { ManageLogTypesComponent } from './shared/modals/manage-log-types/manage-log-types.component';
 import { LogTypeService } from './shared/services/log-type.service';
 
 const routes = [];
 
-@NgModule({
-    declarations: [
+@NgModule({ declarations: [
         AppComponent,
         GridComponent,
         LogModalComponent,
         ConfirmationModalComponent,
         ManageLogTypesComponent
     ],
-    imports: [
-        BrowserModule,
+    bootstrap: [GridComponent], imports: [BrowserModule,
         NgbModule,
         ReactiveFormsModule,
-        HttpClientModule,
         FormsModule,
-        RouterModule.forRoot(routes, {})
-    ],
-    providers: [LogDataService, LogTypeService],
-    bootstrap: [GridComponent]
-})
+        RouterModule.forRoot(routes, {})], providers: [LogDataService, LogTypeService, provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }

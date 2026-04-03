@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { LogDataService } from '../shared/services/log-data.service';
 
@@ -10,10 +10,10 @@ describe('GridComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientModule],
-      declarations: [GridComponent],
-      providers: [LogDataService]
-    })
+    declarations: [GridComponent],
+    imports: [],
+    providers: [LogDataService, provideHttpClient(withInterceptorsFromDi())]
+})
       .compileComponents();
   }));
 
