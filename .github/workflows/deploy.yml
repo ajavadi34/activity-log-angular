@@ -26,7 +26,7 @@ jobs:
         env:
           CI: false
 
-      - name: Deploy via FTP
+      - name: Deploy via FTP (demos)
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ftp.ajdrafts.com
@@ -34,3 +34,12 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/
           server-dir: /demos/activity-log-v2/
+
+      - name: Deploy via FTP (projects)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ftp.ajdrafts.com
+          username: github@ajdrafts.com
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./dist/
+          server-dir: /projects/activity-log-v2/
