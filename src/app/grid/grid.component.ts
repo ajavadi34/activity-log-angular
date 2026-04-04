@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { GridData } from '../shared/models/Grid';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -23,10 +23,12 @@ export class GridComponent implements OnInit {
   isFirstPage: boolean;
   isLastPage: boolean;
   columnTitles: string[];
+  isDark = true;
 
   constructor(
     private modalService: NgbModal,
-    private logService: LogDataService
+    private logService: LogDataService,
+    private renderer: Renderer2
   ) {
     //default dropdown
     this.logTypeId = 0;
@@ -41,7 +43,25 @@ export class GridComponent implements OnInit {
   }
 
   ngOnInit() {
+    const saved = localStorage.getItem('theme');
+    this.isDark = saved !== 'light';
+    this.applyTheme();
     this.loadData(this.logTypeId);
+  }
+
+  toggleTheme(): void {
+    this.isDark = !this.isDark;
+    localStorage.setItem('theme', this.isDark ? 'dark' : 'light');
+    this.applyTheme();
+  }
+
+  private applyTheme(): void {
+    const html = document.documentElement;
+    if (this.isDark) {
+      html.removeAttribute('data-theme');
+    } else {
+      html.setAttribute('data-theme', 'light');
+    }
   }
 
   deleteLog(logId: number, event: any): void {

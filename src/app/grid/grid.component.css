@@ -3,6 +3,44 @@
     padding: 8px 16px 24px;
 }
 
+.theme-toggle-bar {
+    display: flex;
+    justify-content: flex-end;
+    padding: 14px 24px 0;
+}
+
+.btn-theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    background: rgba(129, 140, 248, 0.15);
+    color: #818cf8;
+    border: 1px solid rgba(129, 140, 248, 0.35);
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background .15s, opacity .15s;
+    line-height: 1;
+}
+
+.btn-theme-toggle svg {
+    width: 18px;
+    height: 18px;
+}
+
+[data-theme="light"] .btn-theme-toggle {
+    background: rgba(99, 102, 241, 0.1);
+    color: #4f46e5;
+    border-color: rgba(99, 102, 241, 0.3);
+}
+
+.btn-theme-toggle:hover {
+    opacity: .8;
+}
+
 .table-responsive i.fa {
     font-size: 22px;
     cursor: pointer;
