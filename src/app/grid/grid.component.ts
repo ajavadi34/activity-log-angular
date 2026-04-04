@@ -43,15 +43,28 @@ export class GridComponent implements OnInit {
   }
 
   ngOnInit() {
-    const saved = localStorage.getItem('theme');
-    this.isDark = saved !== 'light';
+    try {
+      const saved = localStorage.getItem('theme');
+      if (saved) {
+        this.isDark = saved !== 'light';
+      } else {
+        // First visit: respect system preference, default to dark
+        this.isDark = !window.matchMedia('(prefers-color-scheme: light)').matches;
+      }
+    } catch {
+      this.isDark = true;
+    }
     this.applyTheme();
     this.loadData(this.logTypeId);
   }
 
   toggleTheme(): void {
     this.isDark = !this.isDark;
-    localStorage.setItem('theme', this.isDark ? 'dark' : 'light');
+    try {
+      localStorage.setItem('theme', this.isDark ? 'dark' : 'light');
+    } catch {
+      // Ignore localStorage errors on mobile/private browsing
+    }
     this.applyTheme();
   }
 
