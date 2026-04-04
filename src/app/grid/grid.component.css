@@ -44,6 +44,7 @@
 .table-responsive i.fa {
     font-size: 18px;
     cursor: pointer;
+    color: var(--primary);
 }
 
 .header-icons i.fa {
