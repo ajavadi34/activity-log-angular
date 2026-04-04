@@ -1,6 +1,11 @@
 // ── Dark / Light theme via data-theme on <html> ──────────────────────────────
 // Default = dark. Light is opt-in via data-theme="light".
 
+html {
+  color-scheme: dark;
+  background-color: var(--bg-body);
+}
+
 :root {
   // Dark defaults
   --bg-body:          #0d1117;
@@ -36,6 +41,8 @@
 }
 
 [data-theme="light"] {
+  color-scheme: light;
+  background-color: var(--bg-body);
   --bg-body:          #f4f6f9;
   --bg-surface:       #ffffff;
   --bg-surface-2:     #f0f2f5;
