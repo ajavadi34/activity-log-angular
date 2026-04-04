@@ -150,6 +150,14 @@ table { color: var(--text-table) !important; }
 .btn-outline-secondary:hover {
   background-color: var(--bg-surface-2) !important;
 }
+.btn-outline-primary {
+  border-color: var(--primary) !important;
+  color: var(--primary) !important;
+}
+.btn-outline-primary:hover {
+  background-color: var(--primary) !important;
+  color: #fff !important;
+}
 
 // Labels / form-labels
 .form-label, label { color: var(--text-secondary) !important; }
