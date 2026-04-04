@@ -34,7 +34,6 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/
           server-dir: /demos/activity-log-v2/
-          dangerous-clean-slate: true
 
       - name: Deploy via FTP (projects)
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -44,4 +43,3 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/
           server-dir: /projects/activity-log-v2/
-          dangerous-clean-slate: true
