@@ -69,12 +69,7 @@ export class GridComponent implements OnInit {
   }
 
   private applyTheme(): void {
-    const html = document.documentElement;
-    if (this.isDark) {
-      html.removeAttribute('data-theme');
-    } else {
-      html.setAttribute('data-theme', 'light');
-    }
+    document.documentElement.setAttribute('data-theme', this.isDark ? 'dark' : 'light');
   }
 
   deleteLog(logId: number, event: any): void {
