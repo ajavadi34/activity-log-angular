@@ -34,8 +34,10 @@
     @if (grid.rows && grid.rows.length) {
       <span [innerHTML]="getPaginationText()"></span>
       }<span class="me-2"></span>
-      <a [routerLink]="[]" (click)="manageLogTypes()"><i class="fa fa-cog" aria-hidden="true"></i></a>
-      <a [routerLink]="[]" (click)="print()" class="ms-2"><i class="fa fa-print" aria-hidden="true"></i></a>
+      <span class="header-icons">
+        <a [routerLink]="[]" (click)="manageLogTypes()"><i class="fa fa-cog" aria-hidden="true"></i></a>
+        <a [routerLink]="[]" (click)="print()" class="ms-2"><i class="fa fa-print" aria-hidden="true"></i></a>
+      </span>
     </div>
   </div>
 
